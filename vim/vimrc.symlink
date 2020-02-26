@@ -1,4 +1,86 @@
-syntax on
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'scrooloose/nerdtree'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'tpope/vim-surround'
+call vundle#end()
 
-" Wrap gitcommit file types at the appropriate length
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set encoding=utf-8
+syntax on
 filetype indent plugin on
+
+" Editor
+set t_Co=256
+set background=dark
+silent! colorscheme gruvbox
+set nu
+set textwidth=80
+set scrolloff=12
+set showcmd
+set showmatch
+"set splitright
+"set splitbelow
+hi cursorline cterm=bold ctermbg=DarkGray
+set cursorline
+hi cursorcolumn ctermbg=DarkGray
+set cursorcolumn
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set backspace=indent,eol,start
+set noswapfile
+set autoindent
+set smartindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set list lcs=tab:\|\ ,trail:»
+au bufwritepre * :%s/\s\+$//e	" Remove tailing space
+au FileType make setlocal noexpandtab
+au FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120 cc=120
+
+" Search
+set path+=**
+set wildmenu
+set ignorecase
+"set smartcase
+set incsearch
+set hlsearch
+set nowrapscan
+
+" Key
+let mapleader=','
+map <silent><leader>ee : e ~/.dotfiles/vim/vimrc.symlink<CR>
+au bufwritepost *vimrc source ~/.dotfiles/vim/vimrc.symlink
+noremap <CR> : noh<CR><CR>
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" NERDTree
+let NERDTreeWinSize=60
+nmap <leader>f : NERDTreeToggle<CR>
+
+" Vim-clang-format
+let g:clang_format#command = 'clang-format'
+let g:clang_format#style_options = {
+    \ "BasedOnStyle" : "google",
+    \ "AccessModifierOffset" : -4,
+    \ "IndentWidth" : 4,
+    \ "TabWidth" : 4}
+"    \ "Language" : Cpp,
+"    \ "AllowShortIfStatementsOnASingleLine" : "true",
+"    \ "AlwaysBreakTemplateDeclarations" : "true",
+"    \ "Standard" : "C++11",
+"    \ "BreakBeforeBraces" : "Stroustrup"
+au FileType c,cpp,objc nnoremap <buffer><leader>cf : <C-u>ClangFormat<CR>
+au FileType c,cpp,objc vnoremap <buffer><leader>cf : ClangFormat<CR>
+" If install vim-operator-user
+"au FileType c,cpp,objc map <buffer><leader>x <Plug>(operator-clang-format)
+nmap <leader>cf : ClangFormatAutoToggle<CR>

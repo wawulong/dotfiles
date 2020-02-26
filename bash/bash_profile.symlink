@@ -1,0 +1,3 @@
+alias cdwk='cd /c/workspace/'
+
+export PATH=$PATH:/c/Program\ Files/LLVM/bin

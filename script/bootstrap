@@ -152,5 +152,17 @@ then
   fi
 fi
 
+OS="`uname`"
+case "$OS" in
+  MINGW64_NT*)
+    info "installing vim plugins"
+    $HOME/.dotfiles/vim/install.sh
+    ;;
+  Linux*)
+    info "installing vim plugins"
+    $HOME/.dotfiles/vim/install.sh
+    ;;
+esac
+  
 echo ''
 echo '  All installed!'

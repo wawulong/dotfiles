@@ -1,3 +1,8 @@
+# Description
+
+This repository is a fork of holman dotfiles.
+And for my environment, I changed some config for win and mac platforms.
+
 # holman does dotfiles
 
 Your dotfiles are how you personalize your system. These are mine.
