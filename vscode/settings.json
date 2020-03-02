@@ -1,0 +1,8 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.detectIndentation": false,
+    "editor.fontSize": 12,
+    "workbench.editor.enablePreview": false,
+    "gitProjectManager.baseProjectsFolders": ["C:\\workspace\\project"],
+    "gitProjectManager.storeRepositoriesBetweenSessions": true,
+}
