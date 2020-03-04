@@ -1,0 +1,2 @@
+alias cdwk='cd /c/workspace/'
+alias python='winpty python'

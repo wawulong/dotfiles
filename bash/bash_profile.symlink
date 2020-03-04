@@ -16,7 +16,9 @@ fi
 
 unset env
 
-alias cdwk='cd /c/workspace/'
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
 
 export PATH=$PATH:/c/Program\ Files/LLVM/bin
 
