@@ -4,5 +4,6 @@
     "editor.fontSize": 12,
     "workbench.editor.enablePreview": false,
     "gitProjectManager.baseProjectsFolders": ["C:\\workspace\\project\\"],
-    "gitProjectManager.storeRepositoriesBetweenSessions": true,
+    "gitProjectManager.storeRepositoriesBetweenSessions": false,
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
 }
