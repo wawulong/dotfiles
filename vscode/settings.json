@@ -1,0 +1,10 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "gitProjectManager.baseProjectsFolders": ["C:\\workspace\\project\\"],
+    "gitProjectManager.storeRepositoriesBetweenSessions": false,
+    "clang-format.executable": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+}

@@ -1,0 +1,13 @@
+[alias]
+        co = checkout
+        promote = !$ZSH/bin/git-promote
+        wtf     = !$ZSH/bin/git-wtf
+        rank-contributors = !$ZSH/bin/git-rank-contributors
+        count   = !git shortlog -sn
+        st = status
+        br = branch
+        ci = commit
+        df = diff -w
+        dft = difftool
+        lg = log --oneline
+        lga = log --oneline --graph --all
