@@ -1,2 +1,3 @@
-alias cdwk='cd /c/workspace/'
-alias python='winpty python'
+# Alias command aliases here
+alias ls='ls --color=auto'
+alias cdwk='cd ~/workspace'
