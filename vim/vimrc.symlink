@@ -1,4 +1,73 @@
-syntax on
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+call vundle#end()
 
-" Wrap gitcommit file types at the appropriate length
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set encoding=utf-8
+syntax on
 filetype indent plugin on
+set t_Co=256
+set background=dark
+silent! colorscheme gruvbox
+set nu
+set textwidth=80
+set scrolloff=12
+set showcmd
+set showmatch
+"set splitright
+"set splitbelow
+hi cursorline cterm=bold ctermbg=DarkGray
+set cursorline
+hi cursorcolumn ctermbg=DarkGray
+set cursorcolumn
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set backspace=indent,eol,start
+set noswapfile
+set autoindent
+set smartindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set list lcs=tab:\|\ ,trail:»
+au bufwritepre * :%s/\s\+$//e   " Remove tailing space
+au FileType make setlocal noexpandtab
+au FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120 cc=120
+
+set path+=**
+set wildmenu
+set ignorecase
+"set smartcase
+set incsearch
+set hlsearch
+set nowrapscan
+
+let mapleader=','
+map <silent><leader>ee : e ~/.dotfiles/vim/vimrc.symlink<CR>
+au bufwritepost *vimrc source ~/.dotfiles/vim/vimrc.symlink
+noremap <CR> : noh<CR><CR>
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" Triger `autoread` when files changes on disk "
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044 "
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode "
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" Notification after file change "
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread "
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+" Ref: http://vimhelp.appspot.com/eval.txt.html#timer_start%28%29 "
+set autoread
+function Fresh(arg)
+    execute 'checktime'
+endfunction
+let timer = timer_start(500, 'Fresh', {'repeat': -1})
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
